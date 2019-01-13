@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>From App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  
+ </head>
+<body>
+
+  <div style="background:#191919 !important; padding: 20px 15px;" class="jumbotron">
+    <h1 style="text-align: center; color: #EEEEEE">Navigus User Feedback Application</h1>
+</div>
+
+  <div class="container">
+    <div >
+      <h1>Feedback Form</h1>
+      <br><br>
+  <form action="{% url 'FormApp:vForm' %}" method="POST" class="form">
+    {% csrf_token %}
+    <div class="formgroup row ">
+    <span class="form-label col-sm-3">username</span>
+    <div class="col-sm-9"><input class="form-control"type="text" name="username" maxlength="60" required>
+    </div>
+    </div>
+    <br>
+    <div class="formgroup row">
+    <span class="form-label col-sm-3">phone no.</span>
+    <div class="col-sm-9"><input class="form-control" type="text" name="phone_no" maxlength="60" required></div>
+    </div>
+    <br>
+    <div class="formgroup row">
+    <span class="form-label col-sm-3">email id</span>
+    <div class="col-sm-9"><input class="form-control" type="email" name="email_id" maxlength="128" required></div>
+    </div>
+    <br>
+    <div class="formgroup row">
+    <span class="form-label col-sm-3">feedback</span>
+    <div class="col-sm-9"><textarea class="form-control" name="feedback" maxlength="500"required> </textarea></div>
+    </div>
+    <br>
+    <div class="formgroup row">
+      <span class="form-label col-sm-3">location</span> 
+      <div class="col-sm-9">
+    <select name="location" class="form-control">  
+      {% for state in statelist %}
+      <option value="{{state}}">{{state}}</option>
+      {% endfor %}
+   <!-- <option value="volvo">Volvo</option>
+   <option value="saab">Saab</option>
+   <option value="opel">Opel</option>
+   <option value="audi">Audi</option> -->
+   </select>
+ </div>
+ </div>
+ <br>
+ <div class="row">
+   <span class="col-sm-3"></span>
+   <div class="col-sm-9">
+   <button type="submit" class="form-control btn btn-primary" >submit</button> 
+  </div>
+</div>
+  </form>
+</div>
+<br>
+<br><br>
+</body>
+</html>
